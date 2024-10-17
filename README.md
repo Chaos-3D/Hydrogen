@@ -10,4 +10,4 @@ and foster a healthy development community.
 This project will continue to maintain the functionality of Klipper for the forseeable future. Bug reports and pull requests will be accepted here on the GitHub.  
 Eventually, the core engine on the SBC will be retired, in favor of [Helium](https://github.com/Chaos-3D/Helium), and the two projects shall merge.
 
-Hydrogen released under the [GPLv3 license](LICENSE.md).
+Hydrogen is released under the [GPLv3 license](LICENSE.md).
