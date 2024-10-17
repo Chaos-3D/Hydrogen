@@ -1,4 +1,4 @@
-name: klipper3d deploy
+name: hydrogen deploy
 on:
   schedule:
     - cron: "0 0 * * *"
