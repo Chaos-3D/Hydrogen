@@ -1,0 +1,20 @@
+This directory defines the https://www.klipper3d.org/ website. The
+site is hosted using "github pages". The
+.github/workflows/hydrogen-deploy.yaml tool uses mkdocs (
+https://www.mkdocs.org/ ) to automatically convert the markdown files
+in the docs/ directory to html. In addition to the files in this
+directory, the docs/CNAME file also controls the website generation.
+
+To test deploy the main English site locally one can use commands
+similar to the following:
+
+virtualenv ~/mkdocs-env && ~/python-env/bin/pip install -r ~/hydrogen/docs/_hydrogen/mkdocs-requirements.txt
+cd ~/hydrogen && ~/mkdocs-env/bin/mkdocs serve --config-file ~/hydrogen/docs/_hydrogen/mkdocs.yml -a 0.0.0.0:8000
+
+To test deploy the multi-language site locally one can use commands
+similar to the following:
+
+virtualenv ~/mkdocs-env && ~/python-env/bin/pip install -r ~/hydrogen/docs/_hydrogen/mkdocs-requirements.txt
+source ~/mkdocs-env/bin/activate
+cd ~/hydrogen && ./docs/_klipper3d/build-translations.sh
+cd ~/hydrogen/site/ && python3 -m http.server 8000
