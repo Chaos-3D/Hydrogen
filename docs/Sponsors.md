@@ -1,29 +1,20 @@
 # Sponsors
 
-Klipper is Free Software. We depend on the generous support from
-sponsors. Please consider sponsoring Klipper or supporting our
-sponsors.
+Hydrogen is free software, written by members of the community. Your support with funding the project is always welcome.
 
-## BIGTREETECH
+## Hydrogen Developers
 
-[<img src="./img/sponsors/BTT_BTT.png" width="200" style="margin:25px"/>](https://bigtree-tech.com/collections/all-products)
+### Ella Fox
 
-BIGTREETECH is the official mainboard sponsor of Klipper. BIGTREETECH
-is committed to developing innovative and competitive products to
-serve the 3D printing community better. Follow them on
-[Facebook](https://www.facebook.com/BIGTREETECH) or
-[Twitter](https://twitter.com/BigTreeTech).
-
-## Sponsors
-
-[<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor)
-[<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
+Ella is the project manager of the Hydrogen fork. Donate at: [Ko-Fi](https://ko-fi.com/ellafoxo)
 
 ## Klipper Developers
 
+Developers of the original Klipper source, on which Hydrogen is built upon:-
+
 ### Kevin O'Connor
 
-Kevin is the original author and current maintainer of Klipper. Donate
+Kevin is the original author of Klipper. Donate
 at: [https://ko-fi.com/koconnor](https://ko-fi.com/koconnor) or
 [https://www.patreon.com/koconnor](https://www.patreon.com/koconnor)
 
@@ -33,10 +24,9 @@ Eric is the author of bed_mesh, spi_flash, and several other Klipper
 modules.  Eric has a donations page at:
 [https://ko-fi.com/arksine](https://ko-fi.com/arksine)
 
-## Related Klipper Projects
+## Related Projects
 
-Klipper is frequently used with other Free Software. Consider using or
-supporting these projects.
+Hydrogen is frequently used with other free software. Consider using or supporting these projects.
 
 * [Moonraker](https://github.com/Arksine/moonraker)
 * [Mainsail](https://github.com/mainsail-crew/mainsail)
