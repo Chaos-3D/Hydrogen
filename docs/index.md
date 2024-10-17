@@ -4,15 +4,16 @@ hide:
 title: Welcome
 ---
 
-![](img/klipper-logo.png){ .center-image }
+Hydrogen is a fork of the [Klipper](https://github.com/Klipper3d/klipper) project.
 
-Klipper is a 3d-Printer firmware. It combines the power of a general
-purpose computer with one or more micro-controllers. See the
-[features](Features.md) document for more information on why you
-should use Klipper.
+Hydrogen is a highly configurable, advanced 3D printer firmware.
 
-To begin using Klipper start by [installing](Installation.md) it.
+A general purpose computer, typically a single board computer (SBC), acts as the primary controller. 
+This is combined with one or more micro-controllers that work in tandem to drive the printer.
 
-Klipper is Free Software. Read the [documentation](Overview.md) or
-view [the Klipper code on github](https://github.com/Klipper3d/klipper).
-We depend on the generous support from our [sponsors](Sponsors.md).
+This project will continue to maintain the functionality of Klipper for the forseeable future. Bug reports and pull requests will be accepted over on the [GitHub](https://github.com/Chaos-3D/Hydrogen) repository.  
+Eventually, the core engine on the SBC will be retired, in favor of [Helium](https://github.com/Chaos-3D/Helium), and the two projects shall merge.
+
+To begin using Hydrogen start by [installing](Installation.md) it.
+
+Hydrogen is released under the [GPLv3 license](LICENSE.md).
