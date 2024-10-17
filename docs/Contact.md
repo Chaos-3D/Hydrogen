@@ -36,5 +36,6 @@ Bug reports should be submitted to the [Issue tracker](https://github.com/Chaos-
 ## I have a feature request
 
 Features need someone to take initiative in order to bring them to life.
-If you have a proposal and feel ready to take it further, please post it within the [Ideas discussion board](https://github.com/Chaos-3D/Hydrogen/discussions/categories/ideas)
+If you have a proposal and feel ready to take it further, please post it within the [Ideas discussion board](https://github.com/Chaos-3D/Hydrogen/discussions/categories/ideas).
+
 Be sure to check that nobody else has already had the same idea before submitting.
