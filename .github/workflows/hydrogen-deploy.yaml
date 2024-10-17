@@ -4,10 +4,10 @@ on:
     - cron: "0 0 * * *"
   push:
     branches:
-      - master
+      - main
     paths:
       - docs/**
-      - .github/workflows/klipper3d-deploy.yaml
+      - .github/workflows/hydrogen-deploy.yaml
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,13 +20,13 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('docs/_klipper3d/mkdocs-requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('docs/_hydrogen/mkdocs-requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        run: pip install -r docs/_klipper3d/mkdocs-requirements.txt
+        run: pip install -r docs/_hydrogen/mkdocs-requirements.txt
       - name: Build MkDocs Pages
-        run: docs/_klipper3d/build-translations.sh
+        run: docs/_hydrogen/build-translations.sh
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:

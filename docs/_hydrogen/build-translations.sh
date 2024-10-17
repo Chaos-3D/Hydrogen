@@ -3,14 +3,14 @@
 # mdocs sites - one for each supported language.  See the README file
 # for additional details.
 
-MKDOCS_DIR="docs/_klipper3d/"
+MKDOCS_DIR="docs/_hydrogen/"
 WORK_DIR="work/"
-TRANS_DIR="${WORK_DIR}klipper-translations/"
+TRANS_DIR="${WORK_DIR}Hydrogen-Translations/"
 TRANS_FILE="${TRANS_DIR}active_translations"
 MKDOCS_MAIN="${MKDOCS_DIR}mkdocs-main.yml"
 
 # Fetch translations
-git clone --depth 1 https://github.com/Klipper3d/klipper-translations ${TRANS_DIR}
+git clone --depth 1 https://github.com/Chaos-3D/Hydrogen-Translations ${TRANS_DIR}
 
 # Create new mkdocs-main.yml with language links
 cp ${MKDOCS_DIR}mkdocs.yml ${MKDOCS_MAIN}
@@ -44,7 +44,7 @@ while IFS="," read dirname langsite langdesc langsearch; do
   echo "copy resources"
   cp -r docs/img "${new_docs_dir}"
   cp -r docs/prints "${new_docs_dir}"
-  cp -r docs/_klipper3d "${new_docs_dir}"
+  cp -r docs/_hydrogen "${new_docs_dir}"
 
   # manually replace index.md if a manual-index.md exist
   manual_index="${new_docs_dir}manual-index.md"
@@ -57,7 +57,7 @@ while IFS="," read dirname langsite langdesc langsearch; do
 
   # Create language specific mkdocs-lang-xxx.yml file
   echo "create language specific mkdocs configurations for ${langsite}"
-  new_mkdocs_file="${new_docs_dir}_klipper3d/mkdocs-lang-${langsite}.yml"
+  new_mkdocs_file="${new_docs_dir}_hydrogen/mkdocs-lang-${langsite}.yml"
   cp "${MKDOCS_MAIN}" "${new_mkdocs_file}"
 
   echo "replace search language"

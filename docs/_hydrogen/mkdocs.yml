@@ -4,10 +4,10 @@
 # layout.  See that script and the README file for more details.
 
 # Site and directory configuration
-site_name: Klipper documentation
-repo_url: https://github.com/Klipper3d/klipper
-repo_name: Klipper3d/klipper
-edit_uri: blob/master/docs/
+site_name: Hydrogen documentation
+repo_url: https://github.com/Chaos-3D/Hydrogen
+repo_name: Chaos-3D/Hydrogen
+edit_uri: blob/main/docs/
 use_directory_urls: False
 docs_dir: '../'
 site_dir: '../../site/'
@@ -26,7 +26,7 @@ plugins:
     lang: en
   mkdocs-simple-hooks:
     hooks:
-      on_page_markdown: "docs._klipper3d.mkdocs_hooks:transform"
+      on_page_markdown: "docs._hydrogen.mkdocs_hooks:transform"
   exclude:
     glob: "README.md"
 
