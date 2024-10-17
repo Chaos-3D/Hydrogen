@@ -48,8 +48,8 @@ theme:
       toggle:
         icon: material/lightbulb-outline
         name: Switch to light mode
-  logo: img/klipper.svg
-  favicon: img/favicon.ico
+  # logo: img/klipper.svg
+  # favicon: img/favicon.ico
   icon:
     repo: fontawesome/brands/github
     alternate: material/web
@@ -99,7 +99,7 @@ nav:
   - Overview.md
   - Features.md
   - FAQ.md
-  - Releases.md
+  - Releases_Klipper.md
   - Config_Changes.md
   - Contact.md
   - Telepítés és Konfiguráció:
