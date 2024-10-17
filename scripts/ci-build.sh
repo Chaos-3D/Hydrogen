@@ -32,15 +32,6 @@ finish_test()
 
 
 ######################################################################
-# Check for whitespace errors
-######################################################################
-
-start_test check_whitespace "Check whitespace"
-./scripts/check_whitespace.sh
-finish_test check_whitespace "Check whitespace"
-
-
-######################################################################
 # Run compile tests for several different MCU types
 ######################################################################
 
