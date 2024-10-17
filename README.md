@@ -2,7 +2,8 @@
 
 Hydrogen is a fork of the [Klipper](https://github.com/Klipper3d/klipper) project.
 
-Hydrogen is a highly configurable, advanced 3D printer firmware.  
+Hydrogen is a highly configurable, advanced 3D printer firmware.
+
 The goal of the Hydrogen project is to bring stability to the Klipper environment,
 and foster a healthy development community.
 
