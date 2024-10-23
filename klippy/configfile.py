@@ -1,4 +1,4 @@
-# Code for reading and writing the Klipper config file
+# Code for reading and writing the Hydrogen config file
 #
 # Copyright (C) 2016-2021  Kevin O'Connor <kevin@koconnor.net>
 #

@@ -5,9 +5,9 @@
 # Non-standard installations may need to change this location
 KLIPPY_ENV="${HOME}/klippy-env/bin/python"
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
-KLIPPER_BIN="${SRCDIR}/out/klipper.bin"
-KLIPPER_BIN_DEFAULT=$KLIPPER_BIN
-KLIPPER_DICT_DEFAULT="${SRCDIR}/out/klipper.dict"
+HYDROGEN_BIN="${SRCDIR}/out/hydrogen.bin"
+HYDROGEN_BIN_DEFAULT=$HYDROGEN_BIN
+HYDROGEN_DICT_DEFAULT="${SRCDIR}/out/hydrogen.dict"
 SPI_FLASH="${SRCDIR}/scripts/spi_flash/spi_flash.py"
 BAUD_ARG=""
 CHECK_ARG=""
@@ -16,7 +16,7 @@ set -e
 
 print_help_message()
 {
-    echo "SD Card upload utility for Klipper"
+    echo "SD Card upload utility for Hydrogen"
     echo
     echo "usage: flash_sdcard.sh [-h] [-l] [-c] [-b <baud>] [-f <firmware>] [-d <dictionary>]"
     echo "                       <device> <board>"
@@ -30,8 +30,8 @@ print_help_message()
     echo "  -l                list available boards"
     echo "  -c                run flash check/verify only (skip upload)"
     echo "  -b <baud>         serial baud rate (default is 250000)"
-    echo "  -f <firmware>     path to klipper.bin"
-    echo "  -d <dictionary>   path to klipper.dict for firmware validation"
+    echo "  -f <firmware>     path to hydrogen.bin"
+    echo "  -d <dictionary>   path to hydrogen.dict for firmware validation"
 }
 
 # Parse command line "optional args"
@@ -47,8 +47,8 @@ while getopts "hlcb:f:d:" arg; do
             ;;
         c) CHECK_ARG="-c";;
         b) BAUD_ARG="-b ${OPTARG}";;
-        f) KLIPPER_BIN=$OPTARG;;
-        d) KLIPPER_DICT=$OPTARG;;
+        f) HYDROGEN_BIN=$OPTARG;;
+        d) HYDROGEN_DICT=$OPTARG;;
     esac
 done
 
@@ -61,8 +61,8 @@ fi
 DEVICE=${@:$OPTIND:1}
 BOARD=${@:$OPTIND+1:1}
 
-if [ ! -f $KLIPPER_BIN ]; then
-    echo "No file found at '${KLIPPER_BIN}'"
+if [ ! -f $HYDROGEN_BIN ]; then
+    echo "No file found at '${HYDROGEN_BIN}'"
     exit -1
 fi
 
@@ -71,18 +71,18 @@ if [ ! -e $DEVICE ]; then
     exit -1
 fi
 
-if [ ! $KLIPPER_DICT ] && [ $KLIPPER_BIN == $KLIPPER_BIN_DEFAULT ] ; then
-    KLIPPER_DICT=$KLIPPER_DICT_DEFAULT
+if [ ! $HYDROGEN_DICT ] && [ $HYDROGEN_BIN == $HYDROGEN_BIN_DEFAULT ] ; then
+    HYDROGEN_DICT=$HYDROGEN_DICT_DEFAULT
 fi
 
-if [ $KLIPPER_DICT ]; then
-    if [ ! -f $KLIPPER_DICT ]; then
-        echo "No file found at '${KLIPPER_BIN}'"
+if [ $HYDROGEN_DICT ]; then
+    if [ ! -f $HYDROGEN_DICT ]; then
+        echo "No file found at '${HYDROGEN_BIN}'"
         exit -1
     fi
-    KLIPPER_DICT="-d ${KLIPPER_DICT}"
+    HYDROGEN_DICT="-d ${HYDROGEN_DICT}"
 fi
 
 # Run Script
-echo "Flashing ${KLIPPER_BIN} to ${DEVICE}"
-${KLIPPY_ENV} ${SPI_FLASH} ${CHECK_ARG} ${BAUD_ARG} ${KLIPPER_DICT} ${DEVICE} ${BOARD} ${KLIPPER_BIN}
+echo "Flashing ${HYDROGEN_BIN} to ${DEVICE}"
+${KLIPPY_ENV} ${SPI_FLASH} ${CHECK_ARG} ${BAUD_ARG} ${HYDROGEN_DICT} ${DEVICE} ${BOARD} ${HYDROGEN_BIN}

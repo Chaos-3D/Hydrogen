@@ -19,16 +19,16 @@ src-$(CONFIG_USBSERIAL) += avr/usbserial.c generic/usb_cdc.c
 src-$(CONFIG_SERIAL) += avr/serial.c generic/serial_irq.c
 
 # Suppress broken "misspelled signal handler" warnings on gcc 4.8.1
-CFLAGS_klipper.elf := $(CFLAGS_klipper.elf) $(if $(filter 4.8.1, $(shell $(CC) -dumpversion)), -w)
+CFLAGS_hydrogen.elf := $(CFLAGS_hydrogen.elf) $(if $(filter 4.8.1, $(shell $(CC) -dumpversion)), -w)
 
 # Build the additional hex output file
-target-y += $(OUT)klipper.elf.hex
+target-y += $(OUT)hydrogen.elf.hex
 
-$(OUT)klipper.elf.hex: $(OUT)klipper.elf
+$(OUT)hydrogen.elf.hex: $(OUT)hydrogen.elf
 	@echo "  Creating hex file $@"
 	$(Q)$(OBJCOPY) -j .text -j .data -O ihex $< $@
 
-flash: $(OUT)klipper.elf.hex
+flash: $(OUT)hydrogen.elf.hex
 	@echo "  Flashing $< to $(FLASH_DEVICE) via avrdude"
 	$(Q)if [ -z $(FLASH_DEVICE) ]; then echo "Please specify FLASH_DEVICE"; exit 1; fi
 	$(Q)avrdude -p$(CONFIG_MCU) -c$(CONFIG_AVRDUDE_PROTOCOL) -P"$(FLASH_DEVICE)" -D -U"flash:w:$(<):i"

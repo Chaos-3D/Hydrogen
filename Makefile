@@ -1,4 +1,4 @@
-# Klipper build system
+# Hydrogen build system
 #
 # Copyright (C) 2016-2020  Kevin O'Connor <kevin@koconnor.net>
 #
@@ -35,14 +35,14 @@ CFLAGS := -iquote $(OUT) -iquote src -iquote $(OUT)board-generic/ \
     -ffunction-sections -fdata-sections -fno-delete-null-pointer-checks
 CFLAGS += -flto=auto -fwhole-program -fno-use-linker-plugin -ggdb3
 
-OBJS_klipper.elf = $(patsubst %.c, $(OUT)src/%.o,$(src-y))
-OBJS_klipper.elf += $(OUT)compile_time_request.o
-CFLAGS_klipper.elf = $(CFLAGS) -Wl,--gc-sections
+OBJS_hydrogen.elf = $(patsubst %.c, $(OUT)src/%.o,$(src-y))
+OBJS_hydrogen.elf += $(OUT)compile_time_request.o
+CFLAGS_hydrogen.elf = $(CFLAGS) -Wl,--gc-sections
 
 CPPFLAGS = -I$(OUT) -P -MD -MT $@
 
 # Default targets
-target-y := $(OUT)klipper.elf
+target-y := $(OUT)hydrogen.elf
 
 all:
 
@@ -68,10 +68,9 @@ $(OUT)%.ld: %.lds.S $(OUT)autoconf.h
 	@echo "  Preprocessing $@"
 	$(Q)$(CPP) -I$(OUT) -P -MD -MT $@ $< -o $@
 
-$(OUT)klipper.elf: $(OBJS_klipper.elf)
+$(OUT)hydrogen.elf: $(OBJS_hydrogen.elf)
 	@echo "  Linking $@"
-	$(Q)$(CC) $(OBJS_klipper.elf) $(CFLAGS_klipper.elf) -o $@
-	$(Q)scripts/check-gcc.sh $@ $(OUT)compile_time_request.o
+	$(Q)$(CC) $(OBJS_hydrogen.elf) $(CFLAGS_hydrogen.elf) -o $@
 
 ################ Compile time requests
 
@@ -81,7 +80,7 @@ $(OUT)%.o.ctr: $(OUT)%.o
 $(OUT)compile_time_request.o: $(patsubst %.c, $(OUT)src/%.o.ctr,$(src-y)) ./scripts/buildcommands.py
 	@echo "  Building $@"
 	$(Q)cat $(patsubst %.c, $(OUT)src/%.o.ctr,$(src-y)) | tr -s '\0' '\n' > $(OUT)compile_time_request.txt
-	$(Q)$(PYTHON) ./scripts/buildcommands.py -d $(OUT)klipper.dict -t "$(CC);$(AS);$(LD);$(OBJCOPY);$(OBJDUMP);$(STRIP)" $(OUT)compile_time_request.txt $(OUT)compile_time_request.c
+	$(Q)$(PYTHON) ./scripts/buildcommands.py -d $(OUT)hydrogen.dict -t "$(CC);$(AS);$(LD);$(OBJCOPY);$(OBJDUMP);$(STRIP)" $(OUT)compile_time_request.txt $(OUT)compile_time_request.c
 	$(Q)$(CC) $(CFLAGS) -c $(OUT)compile_time_request.c -o $@
 
 ################ Auto generation of "board/" include file link

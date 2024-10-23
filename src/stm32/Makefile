@@ -31,9 +31,9 @@ CFLAGS-$(CONFIG_MACH_STM32H7) += -mcpu=cortex-m7 -Ilib/stm32h7/include
 CFLAGS-$(CONFIG_MACH_STM32L4) += -mcpu=cortex-m4 -Ilib/stm32l4/include
 CFLAGS += $(CFLAGS-y) -D$(MCU_UPPER) -mthumb -Ilib/cmsis-core -Ilib/fast-hash
 
-CFLAGS_klipper.elf += -nostdlib -lgcc -lc_nano
-CFLAGS_klipper.elf += -T $(OUT)src/generic/armcm_link.ld
-$(OUT)klipper.elf: $(OUT)src/generic/armcm_link.ld
+CFLAGS_hydrogen.elf += -nostdlib -lgcc -lc_nano
+CFLAGS_hydrogen.elf += -T $(OUT)src/generic/armcm_link.ld
+$(OUT)hydrogen.elf: $(OUT)src/generic/armcm_link.ld
 
 # Add source files
 src-y += stm32/watchdog.c stm32/gpio.c stm32/clockline.c stm32/dfu_reboot.c
@@ -95,9 +95,9 @@ src-$(CONFIG_USBCANBUS) += stm32/chipid.c generic/usb_canbus.c
 src-$(CONFIG_HAVE_GPIO_HARD_PWM) += stm32/hard_pwm.c
 
 # Binary output file rules
-target-y += $(OUT)klipper.bin
+target-y += $(OUT)hydrogen.bin
 
-$(OUT)klipper.bin: $(OUT)klipper.elf
+$(OUT)hydrogen.bin: $(OUT)hydrogen.elf
 	@echo "  Creating hex file $@"
 	$(Q)$(OBJCOPY) -O binary $< $@
 
@@ -106,10 +106,10 @@ lib/hidflash/hid-flash:
 	@echo "  Building hid-flash"
 	$(Q)make -C lib/hidflash
 
-flash: $(OUT)klipper.bin lib/hidflash/hid-flash
+flash: $(OUT)hydrogen.bin lib/hidflash/hid-flash
 	@echo "  Flashing $< to $(FLASH_DEVICE)"
-	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" -s "$(CONFIG_FLASH_APPLICATION_ADDRESS)" $(if $(NOSUDO),--no-sudo) $(OUT)klipper.bin
+	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" -s "$(CONFIG_FLASH_APPLICATION_ADDRESS)" $(if $(NOSUDO),--no-sudo) $(OUT)hydrogen.bin
 
-serialflash: $(OUT)klipper.bin
+serialflash: $(OUT)hydrogen.bin
 	@echo "  Flashing $< to $(FLASH_DEVICE) via stm32flash"
 	$(Q)stm32flash -w $< -v -g 0 $(FLASH_DEVICE)

@@ -1,11 +1,11 @@
 #!/bin/bash
-# This script installs Klipper on an debian
+# This script installs Hydrogen on an debian
 #
 
 PYTHONDIR="${HOME}/klippy-env"
 SYSTEMDDIR="/etc/systemd/system"
-KLIPPER_USER=$USER
-KLIPPER_GROUP=$KLIPPER_USER
+HYDROGEN_USER=$USER
+HYDROGEN_GROUP=$HYDROGEN_USER
 
 # Step 1: Install system packages
 install_packages()
@@ -47,12 +47,11 @@ create_virtualenv()
 install_script()
 {
 # Create systemd service file
-    KLIPPER_LOG=/tmp/klippy.log
+    HYDROGEN_LOG=/tmp/klippy.log
     report_status "Installing system start script..."
-    sudo /bin/sh -c "cat > $SYSTEMDDIR/klipper.service" << EOF
-#Systemd service file for klipper
+    sudo /bin/sh -c "cat > $SYSTEMDDIR/hydrogen.service" << EOF
 [Unit]
-Description=Starts klipper on startup
+Description=Starts Hydrogen on startup
 After=network.target
 
 [Install]
@@ -60,21 +59,21 @@ WantedBy=multi-user.target
 
 [Service]
 Type=simple
-User=$KLIPPER_USER
+User=$HYDROGEN_USER
 RemainAfterExit=yes
-ExecStart=${PYTHONDIR}/bin/python ${SRCDIR}/klippy/klippy.py ${HOME}/printer.cfg -l ${KLIPPER_LOG}
+ExecStart=${PYTHONDIR}/bin/python ${SRCDIR}/klippy/klippy.py ${HOME}/printer.cfg -l ${HYDROGEN_LOG}
 Restart=always
 RestartSec=10
 EOF
-# Use systemctl to enable the klipper systemd service script
-    sudo systemctl enable klipper.service
+# Use systemctl to enable the hydrogen systemd service script
+    sudo systemctl enable hydrogen.service
 }
 
 # Step 4: Start host software
 start_software()
 {
-    report_status "Launching Klipper host software..."
-    sudo systemctl start klipper
+    report_status "Launching Hydrogen host software..."
+    sudo systemctl start hydrogen
 }
 
 # Helper functions

@@ -133,7 +133,7 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)},
     {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)},
   #endif
-    // Pins that map to all klipper defined STM32F4 procs
+    // Pins that map to all hydrogen defined STM32F4 procs
     {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)},
     {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)},
     {TIM1,  GPIO('A',  9),  2, GPIO_FUNCTION(1)},

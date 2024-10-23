@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Script that tries to find how much stack space each function in an
 # object is using.
 #
@@ -7,7 +7,7 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 
 # Usage:
-#   avr-objdump -d out/klipper.elf | scripts/checkstack.py
+#   avr-objdump -d out/hydrogen.elf | scripts/checkstack.py
 
 import sys
 import re

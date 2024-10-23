@@ -16,7 +16,7 @@
 #include "internal.h" // report_errno
 #include "sched.h" // sched_shutdown
 
-#define GPIO_CONSUMER "klipper"
+#define GPIO_CONSUMER "hydrogen"
 
 DECL_ENUMERATION_RANGE("pin", "gpio0", GPIO(0, 0), MAX_GPIO_LINES);
 DECL_ENUMERATION_RANGE("pin", "gpiochip0/gpio0", GPIO(0, 0), MAX_GPIO_LINES);

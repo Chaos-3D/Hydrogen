@@ -45,7 +45,7 @@ SECTIONS
       __stack_end = .;
   } >SRAM_A2
 
-  ASSERT(. <= (SRAM_A2_SIZE), "Klipper image is too large")
+  ASSERT(. <= (SRAM_A2_SIZE), "Hydrogen image is too large")
 
   /DISCARD/ : {
     *(.comment*)

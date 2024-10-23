@@ -1,5 +1,5 @@
-#!/usr/bin/env python2
-# Module supporting uploads Klipper firmware to an SD Card via SPI and SDIO
+#!/usr/bin/env python
+# Module supporting uploads Hydrogen firmware to an SD Card via SPI and SDIO
 #
 # Copyright (C) 2021 Eric Callahan <arksine.code@gmail.com>
 # Copyright (C) 2022 H. Gregor Molter <gregor.molter@secretlab.de>

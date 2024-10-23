@@ -7,8 +7,8 @@ src-y += linux/pca9685.c linux/spidev.c linux/analog.c linux/hard_pwm.c
 src-y += linux/i2c.c linux/gpio.c generic/crc16_ccitt.c generic/alloc.c
 src-y += linux/sensor_ds18b20.c
 
-CFLAGS_klipper.elf += -lutil -lrt -lpthread
+CFLAGS_hydrogen.elf += -lutil -lrt -lpthread
 
-flash: $(OUT)klipper.elf
+flash: $(OUT)hydrogen.elf
 	@echo "  Flashing"
 	$(Q)sudo ./scripts/flash-linux.sh $(OUT)

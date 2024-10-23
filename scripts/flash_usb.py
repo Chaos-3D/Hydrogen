@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-# Tool to enter a USB bootloader and flash Klipper
+#!/usr/bin/env python
+# Tool to enter a USB bootloader and flash Hydrogen
 #
 # Copyright (C) 2019  Kevin O'Connor <kevin@koconnor.net>
 #
@@ -179,7 +179,7 @@ def flash_hidflash(device, binfile, sudo=True):
     else:
         call_hidflash(binfile, sudo)
 
-# Call Klipper modified "picoboot"
+# Call Hydrogen modified "picoboot"
 def call_picoboot(bus, addr, binfile, sudo):
     args = ["lib/rp2040_flash/rp2040_flash", binfile]
     if bus is not None:
@@ -191,7 +191,7 @@ def call_picoboot(bus, addr, binfile, sudo):
     if res != 0:
         raise error("Error running rp2040_flash")
 
-# Flash via Klipper modified "picoboot"
+# Flash via Hydrogen modified "picoboot"
 def flash_picoboot(device, binfile, sudo):
     ttyname, serbypath = translate_serial_to_tty(device)
     buspath, devpath = translate_serial_to_usb_path(device)
@@ -241,7 +241,7 @@ def flash_atsamd(options, binfile):
 SMOOTHIE_HELP = """
 Failed to flash to %s: %s
 
-If flashing Klipper to a Smoothieboard for the first time it may be
+If flashing Hydrogen to a Smoothieboard for the first time it may be
 necessary to manually place the board into "bootloader mode" - press
 and hold the "Play button" and then press and release the "Reset
 button".
@@ -251,7 +251,7 @@ following command:
   make flash FLASH_DEVICE=1d50:6015
 
 Alternatively, one can flash a Smoothieboard via SD card - copy the
-"out/klipper.bin" file to a file named "firmware.bin" on an SD card
+"out/hydrogen.bin" file to a file named "firmware.bin" on an SD card
 and then restart the Smoothieboard with that SD card.
 
 """
@@ -325,7 +325,7 @@ following command:
 
 Alternatively, one can flash rp2040 boards like the Pico by manually
 entering bootloader mode(hold bootsel button during powerup), mount the
-device as a usb drive, and copy klipper.uf2 to the device.
+device as a usb drive, and copy hydrogen.uf2 to the device.
 
 """
 
@@ -356,7 +356,7 @@ MCUTYPES = {
 ######################################################################
 
 def main():
-    usage = "%prog [options] -t <type> -d <device> <klipper.bin>"
+    usage = "%prog [options] -t <type> -d <device> <hydrogen.bin>"
     opts = optparse.OptionParser(usage)
     opts.add_option("-t", "--type", type="string", dest="mcutype",
                     help="micro-controller type")
