@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Script to handle build time requests embedded in C code.
 #
 # Copyright (C) 2016-2024  Kevin O'Connor <kevin@koconnor.net>
@@ -534,7 +534,7 @@ class HandleVersions:
     def update_data_dictionary(self, data):
         data['version'] = self.version
         data['build_versions'] = self.toolstr
-        data['app'] = 'Klipper'
+        data['app'] = 'Hydrogen'
         data['license'] = 'GNU GPLv3'
     def generate_code(self, options):
         cleanbuild, self.toolstr = tool_versions(options.tools)

@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs Klipper on an x86_64 machine running the
+# This script installs Hydrogen on an x86_64 machine running the
 # CentOS 7 distribution.
 
 PYTHONDIR="${HOME}/klippy-env"
@@ -42,10 +42,9 @@ install_script()
 {
 # Create systemd service file
     report_status "Installing system start script..."
-    sudo /bin/sh -c "cat > $SYSTEMDDIR/klipper.service" << EOF
-#Systemd service file for klipper
+    sudo /bin/sh -c "cat > $SYSTEMDDIR/hydrogen.service" << EOF
 [Unit]
-Description=Starts klipper on startup
+Description=Starts Hydrogen on startup
 After=network.target
 
 [Install]
@@ -57,11 +56,11 @@ User=$USER
 RemainAfterExit=yes
 ExecStart=${PYTHONDIR}/bin/python ${SRCDIR}/klippy/klippy.py ${HOME}/printer.cfg -l /var/log/klippy.log
 EOF
-# Use systemctl to enable the klipper systemd service script
-    sudo systemctl enable klipper.service
+# Use systemctl to enable the hydrogen systemd service script
+    sudo systemctl enable hydrogen.service
 }
 
-# Configuration for systemctl klipper
+# Configuration for systemctl hydrogen
 
 KLIPPY_USER=$USER
 
@@ -69,8 +68,8 @@ KLIPPY_USER=$USER
 # Step 5: Start host software
 start_software()
 {
-    report_status "Launching Klipper host software..."
-    sudo systemctl restart klipper
+    report_status "Launching Hydrogen host software..."
+    sudo systemctl restart hydrogen
 }
 
 # Helper functions

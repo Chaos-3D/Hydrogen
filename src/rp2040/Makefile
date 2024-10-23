@@ -41,26 +41,26 @@ $(OUT)lib/rp2040/elf2uf2/elf2uf2: lib/rp2040/elf2uf2/main.cpp
 	@echo "  Building $@"
 	$(Q)g++ -g -O -Ilib/rp2040 $< -o $@
 
-$(OUT)klipper.uf2: $(OUT)klipper.elf $(OUT)lib/rp2040/elf2uf2/elf2uf2
+$(OUT)hydrogen.uf2: $(OUT)hydrogen.elf $(OUT)lib/rp2040/elf2uf2/elf2uf2
 	@echo "  Creating uf2 file $@"
 	$(Q)$(OUT)lib/rp2040/elf2uf2/elf2uf2 $< $@
 
-rptarget-$(CONFIG_RP2040_HAVE_STAGE2) := $(OUT)klipper.uf2
+rptarget-$(CONFIG_RP2040_HAVE_STAGE2) := $(OUT)hydrogen.uf2
 stage2-$(CONFIG_RP2040_HAVE_STAGE2) := $(OUT)stage2.o
 
 # rp2040 building when using a bootloader
-$(OUT)klipper.bin: $(OUT)klipper.elf
+$(OUT)hydrogen.bin: $(OUT)hydrogen.elf
 	@echo "  Creating bin file $@"
 	$(Q)$(OBJCOPY) -O binary $< $@
 
-rptarget-$(CONFIG_RP2040_HAVE_BOOTLOADER) := $(OUT)klipper.bin
+rptarget-$(CONFIG_RP2040_HAVE_BOOTLOADER) := $(OUT)hydrogen.bin
 
-# Set klipper.elf linker rules
+# Set hydrogen.elf linker rules
 target-y += $(rptarget-y)
-CFLAGS_klipper.elf += -nostdlib -lgcc -lc_nano
-CFLAGS_klipper.elf += -T $(OUT)src/rp2040/rp2040_link.ld
-OBJS_klipper.elf += $(stage2-y)
-$(OUT)klipper.elf: $(stage2-y) $(OUT)src/rp2040/rp2040_link.ld
+CFLAGS_hydrogen.elf += -nostdlib -lgcc -lc_nano
+CFLAGS_hydrogen.elf += -T $(OUT)src/rp2040/rp2040_link.ld
+OBJS_hydrogen.elf += $(stage2-y)
+$(OUT)hydrogen.elf: $(stage2-y) $(OUT)src/rp2040/rp2040_link.ld
 
 # Flash rules
 lib/rp2040_flash/rp2040_flash:

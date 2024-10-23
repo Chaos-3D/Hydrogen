@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs Klipper on a Beaglebone running Debian Bullseye
+# This script installs Hydrogen on a Beaglebone running Debian Bullseye
 # for use with its PRU micro-controller.
 
 # Step 1: Do main install
@@ -30,8 +30,8 @@ install_packages()
 install_script()
 {
     report_status "Installing pru start script..."
-    sudo cp "${SRCDIR}/scripts/klipper-pru-start.sh" /etc/init.d/klipper_pru
-    sudo update-rc.d klipper_pru defaults-disabled
+    sudo cp "${SRCDIR}/scripts/hydrogen-pru-start.sh" /etc/init.d/hydrogen_pru
+    sudo update-rc.d hydrogen_pru defaults-disabled
 }
 
 # Step 4: Install pru udev rule
@@ -39,7 +39,7 @@ install_udev()
 {
     report_status "Installing pru udev rule..."
     sudo /bin/sh -c "cat > /etc/udev/rules.d/pru.rules" <<EOF
-SUBSYSTEM=="remoteproc", ENV{REMOTEPROC_NAME}!="", TAG+="systemd", ENV{SYSTEMD_WANTS}="klipper_pru.service"
+SUBSYSTEM=="remoteproc", ENV{REMOTEPROC_NAME}!="", TAG+="systemd", ENV{SYSTEMD_WANTS}="hydrogen_pru.service"
 KERNEL=="rpmsg_pru30", GROUP="tty", MODE="0660"
 EOF
 }

@@ -1,6 +1,6 @@
 # Main Kconfig settings
 
-mainmenu "Klipper Firmware Configuration"
+mainmenu "Hydrogen Firmware Configuration"
 
 config LOW_LEVEL_OPTIONS
     bool "Enable extra low-level configuration options"

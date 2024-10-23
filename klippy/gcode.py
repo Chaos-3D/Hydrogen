@@ -249,7 +249,7 @@ class GCodeDispatch:
         if self.is_fileinput:
             self.printer.request_exit('error_exit')
     def _respond_state(self, state):
-        self.respond_info("Klipper state: %s" % (state,), log=False)
+        self.respond_info("Hydrogen state: %s" % (state,), log=False)
     # Parameter parsing helpers
     extended_r = re.compile(
         r'^\s*(?:N[0-9]+\s*)?'
@@ -323,7 +323,7 @@ class GCodeDispatch:
     def cmd_M115(self, gcmd):
         # Get Firmware Version and Capabilities
         software_version = self.printer.get_start_args().get('software_version')
-        kw = {"FIRMWARE_NAME": "Klipper", "FIRMWARE_VERSION": software_version}
+        kw = {"FIRMWARE_NAME": "Hydrogen", "FIRMWARE_VERSION": software_version}
         msg = " ".join(["%s:%s" % (k, v) for k, v in kw.items()])
         did_ack = gcmd.ack(msg)
         if not did_ack:
@@ -352,7 +352,7 @@ class GCodeDispatch:
             self._respond_state("Ready")
             return
         msg = self.printer.get_state_message()[0]
-        msg = msg.rstrip() + "\nKlipper state: Not ready"
+        msg = msg.rstrip() + "\nHydrogen state: Not ready"
         raise gcmd.error(msg)
     cmd_HELP_help = "Report the list of available extended G-Code commands"
     def cmd_HELP(self, gcmd):

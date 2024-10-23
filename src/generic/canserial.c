@@ -114,7 +114,7 @@ console_sendf(const struct command_encoder *ce, va_list args)
 
 // Available commands and responses
 #define CANBUS_CMD_QUERY_UNASSIGNED 0x00
-#define CANBUS_CMD_SET_KLIPPER_NODEID 0x01
+#define CANBUS_CMD_SET_HYDROGEN_NODEID 0x01
 #define CANBUS_CMD_REQUEST_BOOTLOADER 0x02
 #define CANBUS_RESP_NEED_NODEID 0x20
 
@@ -150,7 +150,7 @@ can_process_query_unassigned(struct canbus_msg *msg)
     send.dlc = 8;
     send.data[0] = CANBUS_RESP_NEED_NODEID;
     memcpy(&send.data[1], CanData.uuid, sizeof(CanData.uuid));
-    send.data[7] = CANBUS_CMD_SET_KLIPPER_NODEID;
+    send.data[7] = CANBUS_CMD_SET_HYDROGEN_NODEID;
     // Send with retry
     for (;;) {
         int ret = canbus_send(&send);
@@ -168,7 +168,7 @@ can_id_conflict(void)
 }
 
 static void
-can_process_set_klipper_nodeid(struct canbus_msg *msg)
+can_process_set_hydrogen_nodeid(struct canbus_msg *msg)
 {
     if (msg->dlc < 8)
         return;
@@ -201,8 +201,8 @@ can_process_admin(struct canbus_msg *msg)
     case CANBUS_CMD_QUERY_UNASSIGNED:
         can_process_query_unassigned(msg);
         break;
-    case CANBUS_CMD_SET_KLIPPER_NODEID:
-        can_process_set_klipper_nodeid(msg);
+    case CANBUS_CMD_SET_HYDROGEN_NODEID:
+        can_process_set_hydrogen_nodeid(msg);
         break;
     case CANBUS_CMD_REQUEST_BOOTLOADER:
         can_process_request_bootloader(msg);

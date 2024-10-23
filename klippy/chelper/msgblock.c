@@ -1,4 +1,4 @@
-// Helper code for the Klipper mcu protocol "message blocks"
+// Helper code for the Hydrogen mcu protocol "message blocks"
 //
 // Copyright (C) 2016-2021  Kevin O'Connor <kevin@koconnor.net>
 //

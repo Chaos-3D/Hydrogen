@@ -115,7 +115,7 @@ class PrinterMCUError:
             msg_updated.append("<none>")
         newmsg = ["MCU Protocol error",
                   message_protocol_error1,
-                  "Your Klipper version is: %s" % (host_version,),
+                  "Your Hydrogen version is: %s" % (host_version,),
                   "MCU(s) which should be updated:"]
         newmsg += msg_update + ["Up-to-date MCU(s):"] + msg_updated
         newmsg += [message_protocol_error2, details['error']]

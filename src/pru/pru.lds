@@ -1,4 +1,4 @@
-/* Final linker script klipper.elf on the PRU */
+/* Final linker script hydrogen.elf on the PRU */
 SECTIONS
 {
     /* binutils on the PRU doesn't support --gc-sections so manually

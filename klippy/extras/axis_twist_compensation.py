@@ -257,6 +257,6 @@ class Calibrater:
             % (self.results, avg))
 
 
-# klipper's entry point using [axis_twist_compensation] section in printer.cfg
+# Hydrogen's entry point using [axis_twist_compensation] section in printer.cfg
 def load_config(config):
     return AxisTwistCompensation(config)

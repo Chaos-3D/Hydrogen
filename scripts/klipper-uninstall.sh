@@ -1,23 +1,23 @@
 #!/bin/bash
 # Uninstall script for raspbian/debian type installations
 
-# Stop Klipper Service
-echo "#### Stopping Klipper Service.."
-sudo service klipper stop
+# Stop Hydrogen Service
+echo "#### Stopping Hydrogen Service.."
+sudo service hydrogen stop
 
-# Remove Klipper from Startup
+# Remove Hydrogen from Startup
 echo
-echo "#### Removing Klipper from Startup.."
-sudo update-rc.d -f klipper remove
+echo "#### Removing Hydrogen from Startup.."
+sudo update-rc.d -f hydrogen remove
 
-# Remove Klipper from Services
+# Remove Hydrogen from Services
 echo
-echo "#### Removing Klipper Service.."
-sudo rm -f /etc/init.d/klipper /etc/default/klipper
+echo "#### Removing Hydrogen Service.."
+sudo rm -f /etc/init.d/hydrogen /etc/default/hydrogen
 
-# Notify user of method to remove Klipper source code
+# Notify user of method to remove Hydrogen source code
 echo
-echo "The Klipper system files have been removed."
+echo "The Hydrogen system files have been removed."
 echo
 echo "The following command is typically used to remove local files:"
-echo "  rm -rf ~/klippy-env ~/klipper"
+echo "  rm -rf ~/klippy-env ~/hydrogen"

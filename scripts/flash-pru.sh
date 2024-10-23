@@ -14,7 +14,7 @@ cp out/pru1.elf /lib/firmware/am335x-pru1-fw
 sync
 
 # Restart (if system install script present)
-if [ -f /etc/init.d/klipper_pru ]; then
+if [ -f /etc/init.d/hydrogen_pru ]; then
     echo "Attempting PRU restart..."
-    service klipper_pru restart
+    service hydrogen_pru restart
 fi

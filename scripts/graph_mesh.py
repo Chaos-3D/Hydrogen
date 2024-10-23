@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # Bed Mesh data plotting and analysis
 #
 # Copyright (C) 2024 Eric Callahan <arksine.code@gmail.com>
@@ -466,7 +466,7 @@ def dump_request(cmd_args):
     outfile = cmd_args.output
     if outfile is None:
         postfix = time.strftime("%Y%m%d_%H%M%S")
-        outfile = "klipper-bedmesh-%s.json" % (postfix,)
+        outfile = "hydrogen-bedmesh-%s.json" % (postfix,)
     outfile = os.path.abspath(os.path.expanduser(outfile))
     print("Saving Mesh Output to '%s'" % (outfile))
     with open(outfile, "w") as f:
@@ -492,7 +492,7 @@ def main():
     )
     plot_parser.add_argument(
         "-s", "--scale-plot", action="store_true",
-        help="Use axis limits reported by Klipper to scale plot X/Y"
+        help="Use axis limits reported by Hydrogen to scale plot X/Y"
     )
     plot_parser.add_argument(
         "-p", "--profile-name", type=str, default=None,
@@ -508,12 +508,12 @@ def main():
     )
     plot_parser.add_argument(
         "input", metavar="<input>",
-        help="Path/url to Klipper Socket or path to json file"
+        help="Path/url to Hydrogen Socket or path to json file"
     )
     plot_parser.set_defaults(func=plot_mesh_data)
     analyze_parser.add_argument(
         "input", metavar="<input>",
-        help="Path/url to Klipper Socket or path to json file"
+        help="Path/url to Hydrogen Socket or path to json file"
     )
     analyze_parser.set_defaults(func=analyze)
     dump_parser.add_argument(
@@ -522,7 +522,7 @@ def main():
     )
     dump_parser.add_argument(
         "input", metavar="<input>",
-        help="Path or url to Klipper Socket"
+        help="Path or url to Hydrogen Socket"
     )
     dump_parser.set_defaults(func=dump_request)
     cmd_args = parser.parse_args()

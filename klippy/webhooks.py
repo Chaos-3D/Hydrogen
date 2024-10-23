@@ -9,7 +9,7 @@ import gcode
 REQUEST_LOG_SIZE = 20
 
 # Json decodes strings as unicode types in Python 2.x.  This doesn't
-# play well with some parts of Klipper (particuarly displays), so we
+# play well with some parts of Hydrogen (particuarly displays), so we
 # need to create an object hook. This solution borrowed from:
 #
 # https://stackoverflow.com/questions/956867/
@@ -353,11 +353,11 @@ class WebHooks:
             web_request.get_client_connection().set_client_info(client_info)
         state_message, state = self.printer.get_state_message()
         src_path = os.path.dirname(__file__)
-        klipper_path = os.path.normpath(os.path.join(src_path, ".."))
+        hydrogen_path = os.path.normpath(os.path.join(src_path, ".."))
         response = {'state': state,
                     'state_message': state_message,
                     'hostname': socket.gethostname(),
-                    'klipper_path': klipper_path,
+                    'hydrogen_path': hydrogen_path,
                     'python_path': sys.executable,
                     'process_id': os.getpid(),
                     'user_id': os.getuid(),

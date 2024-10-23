@@ -22,8 +22,8 @@ CFLAGS += $(CFLAGS-y) -D__$(MCU)__ -mthumb -Ilib/cmsis-core -Ilib/fast-hash
 
 samlink-y := $(OUT)src/generic/armcm_link.ld
 samlink-$(CONFIG_MACH_SAME70) := $(OUT)src/atsam/same70_link.ld
-CFLAGS_klipper.elf += -nostdlib -lgcc -lc_nano -T $(samlink-y)
-$(OUT)klipper.elf: $(samlink-y)
+CFLAGS_hydrogen.elf += -nostdlib -lgcc -lc_nano -T $(samlink-y)
+$(OUT)hydrogen.elf: $(samlink-y)
 
 # Add source files
 src-y += atsam/main.c atsam/gpio.c atsam/i2c.c atsam/spi.c
@@ -48,9 +48,9 @@ src-$(CONFIG_MACH_SAM4E) += ../lib/sam4e/gcc/system_sam4e.c
 src-$(CONFIG_MACH_SAME70) += atsam/same70_sysinit.c atsam/sam4e_afec.c
 
 # Build the additional bin output file
-target-y += $(OUT)klipper.bin
+target-y += $(OUT)hydrogen.bin
 
-$(OUT)klipper.bin: $(OUT)klipper.elf
+$(OUT)hydrogen.bin: $(OUT)hydrogen.elf
 	@echo "  Creating bin file $@"
 	$(Q)$(OBJCOPY) -O binary $< $@
 
@@ -59,6 +59,6 @@ lib/bossac/bin/bossac:
 	@echo "  Building bossac"
 	$(Q)make -C lib/bossac bin/bossac
 
-flash: $(OUT)klipper.bin lib/bossac/bin/bossac
+flash: $(OUT)hydrogen.bin lib/bossac/bin/bossac
 	@echo "  Flashing $< to $(FLASH_DEVICE)"
-	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" $(OUT)klipper.bin
+	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" $(OUT)hydrogen.bin

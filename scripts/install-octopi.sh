@@ -1,6 +1,5 @@
 #!/bin/bash
-# This script installs Klipper on a Raspberry Pi machine running the
-# OctoPi distribution.
+# This script installs Hydrogen on a Raspberry Pi machine running the OctoPi distribution.
 
 PYTHONDIR="${HOME}/klippy-env"
 
@@ -44,19 +43,19 @@ create_virtualenv()
 install_script()
 {
     report_status "Installing system start script..."
-    sudo cp "${SRCDIR}/scripts/klipper-start.sh" /etc/init.d/klipper
-    sudo update-rc.d klipper defaults
+    sudo cp "${SRCDIR}/scripts/hydrogen-start.sh" /etc/init.d/hydrogen
+    sudo update-rc.d hydrogen defaults
 }
 
 # Step 4: Install startup script config
 install_config()
 {
-    DEFAULTS_FILE=/etc/default/klipper
+    DEFAULTS_FILE=/etc/default/hydrogen
     [ -f $DEFAULTS_FILE ] && return
 
     report_status "Installing system start configuration..."
     sudo /bin/sh -c "cat > $DEFAULTS_FILE" <<EOF
-# Configuration for /etc/init.d/klipper
+# Configuration for /etc/init.d/hydrogen
 
 KLIPPY_USER=$USER
 
@@ -70,8 +69,8 @@ EOF
 # Step 5: Start host software
 start_software()
 {
-    report_status "Launching Klipper host software..."
-    sudo /etc/init.d/klipper restart
+    report_status "Launching Hydrogen host software..."
+    sudo /etc/init.d/hydrogen restart
 }
 
 # Helper functions

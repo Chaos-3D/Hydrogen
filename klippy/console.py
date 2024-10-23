@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Script to implement a test console with firmware over serial port
 #
 # Copyright (C) 2016-2021  Kevin O'Connor <kevin@koconnor.net>
@@ -8,7 +8,7 @@ import sys, optparse, os, re, logging
 import util, reactor, serialhdl, msgproto, clocksync
 
 help_txt = """
-  This is a debugging console for the Klipper micro-controller.
+  This is a debugging console for the Hydrogen micro-controller.
   In addition to mcu commands, the following artificial commands are
   available:
     DELAY : Send a command at a clock time (eg, "DELAY 9999 get_uptime")

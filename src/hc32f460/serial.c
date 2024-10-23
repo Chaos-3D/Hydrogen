@@ -130,7 +130,7 @@ serialRx(void)
 {
     uint16_t data = USART_RecData(USARTx);
 
-    // call to klipper generic/serial_irq function
+    // call to hydrogen generic/serial_irq function
     serial_rx_byte(data);
 }
 DECL_ARMCM_IRQ(serialRx, Int000_IRQn);

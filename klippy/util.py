@@ -75,9 +75,9 @@ def dump_mcu_build():
     except:
         pass
     # Try to log last mcu build version
-    dump_file_stats(build_dir, 'out/klipper.dict')
+    dump_file_stats(build_dir, 'out/hydrogen.dict')
     try:
-        f = open(os.path.join(build_dir, 'out/klipper.dict'), 'r')
+        f = open(os.path.join(build_dir, 'out/hydrogen.dict'), 'r')
         data = f.read(32*1024)
         f.close()
         data = json.loads(data)
@@ -87,7 +87,7 @@ def dump_mcu_build():
         logging.info("Last MCU build config: %s", " ".join(cparts))
     except:
         pass
-    dump_file_stats(build_dir, 'out/klipper.elf')
+    dump_file_stats(build_dir, 'out/hydrogen.elf')
 
 
 ######################################################################

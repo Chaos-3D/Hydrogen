@@ -64,8 +64,7 @@ class PrintStats:
             self.init_duration = self.total_duration - \
                 self.prev_pause_duration
         self.print_start_time = None
-    cmd_SET_PRINT_STATS_INFO_help = "Pass slicer info like layer act and " \
-                                    "total to klipper"
+    cmd_SET_PRINT_STATS_INFO_help = "Pass slicer info like layer act and total to Hydrogen"
     def cmd_SET_PRINT_STATS_INFO(self, gcmd):
         total_layer = gcmd.get_int("TOTAL_LAYER", self.info_total_layer, \
                                    minval=0)

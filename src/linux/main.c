@@ -69,7 +69,7 @@ main(int argc, char **argv)
     // Parse program args
     orig_argv = argv;
     int opt, watchdog = 0, realtime = 0;
-    char *serial = "/tmp/klipper_host_mcu";
+    char *serial = "/tmp/hydrogen_host_mcu";
     while ((opt = getopt(argc, argv, "wrI:")) != -1) {
         switch (opt) {
         case 'w':

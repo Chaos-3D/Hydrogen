@@ -161,7 +161,7 @@ class DualCarriages:
             self.dc[index].activate(mode, toolhead.get_position())
         kin.update_limits(self.axis, self.get_kin_range(toolhead, mode))
     def _handle_ready(self):
-        # Apply the transform later during Klipper initialization to make sure
+        # Apply the transform later during Hydrogen initialization to make sure
         # that input shaping can pick up the correct stepper kinematic flags.
         for dc in self.dc:
             dc.apply_transform()

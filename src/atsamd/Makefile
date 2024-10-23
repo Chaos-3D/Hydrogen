@@ -14,9 +14,9 @@ CFLAGS-$(CONFIG_MACH_SAME51) += -Ilib/same51/include
 CFLAGS-$(CONFIG_MACH_SAMX5) += -mcpu=cortex-m4 -Ilib/same54/include
 CFLAGS += $(CFLAGS-y) -D__$(MCU)__ -mthumb -Ilib/cmsis-core -Ilib/fast-hash
 
-CFLAGS_klipper.elf += -nostdlib -lgcc -lc_nano
-CFLAGS_klipper.elf += -T $(OUT)src/generic/armcm_link.ld
-$(OUT)klipper.elf: $(OUT)src/generic/armcm_link.ld
+CFLAGS_hydrogen.elf += -nostdlib -lgcc -lc_nano
+CFLAGS_hydrogen.elf += -T $(OUT)src/generic/armcm_link.ld
+$(OUT)hydrogen.elf: $(OUT)src/generic/armcm_link.ld
 
 # Add source files
 src-y += atsamd/main.c atsamd/gpio.c generic/crc16_ccitt.c
@@ -40,13 +40,13 @@ src-$(CONFIG_MACH_SAMX5) += atsamd/samd51_watchdog.c
 src-$(CONFIG_MACH_SAMX5) += atsamd/samd51_clock.c generic/armcm_timer.c
 
 # Build the additional hex and bin output files
-target-y += $(OUT)klipper.bin $(OUT)klipper.elf.hex
+target-y += $(OUT)hydrogen.bin $(OUT)hydrogen.elf.hex
 
-$(OUT)klipper.bin: $(OUT)klipper.elf
+$(OUT)hydrogen.bin: $(OUT)hydrogen.elf
 	@echo "  Creating bin file $@"
 	$(Q)$(OBJCOPY) -O binary $< $@
 
-$(OUT)klipper.elf.hex: $(OUT)klipper.elf
+$(OUT)hydrogen.elf.hex: $(OUT)hydrogen.elf
 	@echo "  Creating hex file $@"
 	$(Q)$(OBJCOPY) -j .text -j .relocate -O ihex $< $@
 
@@ -58,6 +58,6 @@ lib/bossac/bin/bossac:
 BOSSAC_OFFSET-$(CONFIG_MACH_SAMD21) := 0x2000
 BOSSAC_OFFSET-$(CONFIG_MACH_SAMX5) := 0x4000
 
-flash: $(OUT)klipper.bin lib/bossac/bin/bossac
+flash: $(OUT)hydrogen.bin lib/bossac/bin/bossac
 	@echo "  Flashing $< to $(FLASH_DEVICE)"
-	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" -s "$(BOSSAC_OFFSET-y)" $(OUT)klipper.bin
+	$(Q)$(PYTHON) ./scripts/flash_usb.py -t $(CONFIG_MCU) -d "$(FLASH_DEVICE)" -s "$(BOSSAC_OFFSET-y)" $(OUT)hydrogen.bin

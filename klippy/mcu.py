@@ -1,4 +1,4 @@
-# Interface to Klipper micro-controller code
+# Interface to Hydrogen micro-controller code
 #
 # Copyright (C) 2016-2024  Kevin O'Connor <kevin@koconnor.net>
 #
@@ -568,7 +568,7 @@ class MCU:
         else:
             self._serialport = config.get('serial')
             if not (self._serialport.startswith("/dev/rpmsg_")
-                    or self._serialport.startswith("/tmp/klipper_host_")):
+                    or self._serialport.startswith("/tmp/hydrogen_host_")):
                 self._baud = config.getint('baud', 250000, minval=2400)
         # Restarts
         restart_methods = [None, 'arduino', 'cheetah', 'command', 'rpi_usb']

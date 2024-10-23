@@ -48,7 +48,7 @@ for TARGET in test/configs/*.config ; do
     make V=1
     size out/*.elf
     finish_test mcu_compile "$TARGET"
-    cp out/klipper.dict ${DICTDIR}/$(basename ${TARGET} .config).dict
+    cp out/hydrogen.dict ${DICTDIR}/$(basename ${TARGET} .config).dict
 done
 
 
